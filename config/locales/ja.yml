@@ -4,6 +4,7 @@ ja:
       notification: お知らせ
       menu: メニュー
       reservation: 予約
+      seat: 座席
     attributes:
       notification:
         title: タイトル
@@ -21,6 +22,17 @@ ja:
         email: メールアドレス
         phone_number: 電話番号
         request: 要望
+      seat:
+        name: テーブル名
+        type: 席の種類
+        number: 座席数
+      reservation_seat:
+        reservation: 予約
+        seat: 座席
+      prevent_reservation:
+        date: 予約日
+        start_min: 開始時間
+        end_min: 終了時間
   date:
     formats:
       info: '%Y年%-m月%-d日(%a)'

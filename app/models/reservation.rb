@@ -6,7 +6,8 @@ class Reservation < ApplicationRecord
 
   UNIT_MIN = ConvertTime::UNIT_MIN  # 15
   LIMITE_UNITS = 8
-  LIMIT_MIN_RANGE = 0..1680
+  LIMIT_MAX_MIN = 1680
+  LIMIT_MIN_RANGE = { greater_than_or_equal_to: 0, less_than_or_equal_to: Reservation::LIMIT_MAX_MIN }
 
   MAXIMUM_GUEST_NUMBER = 12
   ACCEPTABLE_PRIVATE_NUMBER = 6
@@ -31,7 +32,9 @@ class Reservation < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX }
   validates :phone_number, presence: true, format: { with: VALID_PHONE_NUMBER_REGEX }
   validates :request, length: { maximum: 300 }
-  validates :start_min, presence: true, numericality: { in: LIMIT_MIN_RANGE }
+  validates :start_min, presence: true, numericality: LIMIT_MIN_RANGE
+
+  has_many :reservation_seats, dependent: :destroy
 
   # 本日以前の日付は入らないようにする
   validate :date_before_start

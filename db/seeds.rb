@@ -5,6 +5,17 @@ require "csv"
   ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{table_name}")
 end
 
+# 座席の種類
+seats_params = [
+  { name: "counter-1", type: 0, number: 3 },
+  { name: "counter-2", type: 0, number: 3 },
+  { name: "counter-2", type: 0, number: 3 },
+  { name: "table-1", type: 1, number: 4 },
+  { name: "table-2", type: 1, number: 4 },
+  { name: "table-3", type: 1, number: 4 },
+]
+
+
 # 規定の営業・休業
 # date4 = Date.new(2021, 5, 10)
 # DayCondition.create!(applicable_date: date4, wday: 3, start_min: nil, end_min: nil)
